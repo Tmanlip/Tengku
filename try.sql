@@ -60,3 +60,17 @@ VALUES('7892', 'Mohamad', 'Faiz', '0178890040', 'JAE001') ;
 
 INSERT INTO CUSTOMERS
 VALUES ('9088', 'Alifah', 'Amran', '0113679081', 'JBP001')
+
+
+DML 2 SQL 3
+
+SELECT*FROM customers
+
+SELECT ctr_number, first_name, last_name, phone_no
+FROM customers
+
+SELECT name, number_of_players
+FROM TEAMS
+
+SELECT name, description, category
+FROM ITEMS
