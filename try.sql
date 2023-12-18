@@ -65,12 +65,21 @@ VALUES ('9088', 'Alifah', 'Amran', '0113679081', 'JBP001')
 DML 2 SQL 3
 
 SELECT*FROM customers
+SELECT*FROM teams
+SELECT*FROM items
 
-SELECT ctr_number, first_name, last_name, phone_no
+SELECT ctr_number, first_name, last_name, phone_number
+FROM customers
+SELECT name, number_of_players
+FROM teams
+SELECT name, description, category
+FROM items
+
+SELECT first_name, last_name, current_balance, current_balance/12
+FROM customers
+SELECT first_name, last_name, current_balance, current_balance - 5
 FROM customers
 
-SELECT name, number_of_players
-FROM TEAMS
+SELECT first_name "First Name", last_name "Last Name", current_balance "Balance", current_balance/12 "Montlhy Repayments" 
+FROM customers
 
-SELECT name, description, category
-FROM ITEMS
