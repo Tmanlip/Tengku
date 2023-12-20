@@ -83,3 +83,68 @@ FROM customers
 SELECT first_name "First Name", last_name "Last Name", current_balance "Balance", current_balance/12 "Montlhy Repayments" 
 FROM customers
 
+SELECT*FROM customers
+WHERE ctr_number = 'c01986'
+SELECT first_name, last_name, ctr_number
+FROM customers
+WHERE current_balance >= 100
+
+SELECT id, odr_date, odr_time
+FROM orders
+WHERE odr_date < '28-May-2019'
+SELECT id, cost, units
+FROM inventory_list
+WHERE cost BETWEEN 3.00 AND 15.00
+SELECT id, cost, units
+FROM inventory_list
+WHERE units IN (50, 100, 150, 200)
+SELECT id, cost, units
+FROM inventory_list
+WHERE units NOT IN (50, 100, 150, 200)
+SELECT itm_number, name
+FROM items
+WHERE name LIKE 'g%'
+SELECT itm_number "Item Number", name
+FROM items
+WHERE name LIKE '_o%'
+SELECT ctr_number AS Customer Number, address_line_1 "Street Address", zip_code AS Postal Code
+FROM customers_addresses ;
+WHERE address_line_2 = 'Starford' 
+AND city = 'Liverpool' ;
+SELECT ctr_number AS Customer Number, address_line_1 "Street Address", zip_code AS Postal Code
+FROM customers_addresses ;
+WHERE address_line_2 = 'Starford' 
+SELECT ctr_number AS Customer Number, address_line_1 "Street Address", zip_code AS Postal Code
+FROM customers_addresses ;
+WHERE NOT (address_line_2 = 'Starford' 
+OR city = 'Liverpool' )
+SELECT name, number_of_players "Number of Player"
+FROM teams
+ORDER BY name ASC
+OR city = 'Liverpool' 
+SELECT 'The ' || name || ' team has ' || number_of_players || ' players and does not receive a discount of ' AS "Team Information"
+FROM teams 
+WHERE discount is NULL ; 
+SELECT 'The ' || name || ' team has ' || number_of_players || ' players and receive a discount of ' || discount || ' percent' AS "Team Information"
+FROM teams 
+WHERE discount = 10 ; 
+SELECT ctr_number "Customer Number", address_line_1 "Street Address", zip_code "Postal Code"
+FROM customers_addresses
+WHERE city = 'Liverpool' 
+AND address_line_2 = 'Starford' ;
+SELECT ctr_number "Customer Number", address_line_1 "Street Address", zip_code "Postal Code"
+FROM customers_addresses
+WHERE city NOT IN 'Liverpool' 
+SELECT ROWNUM, firsT_name || ' ' || last_name "Customer Name"
+FROM (SELECT first_name, last_name 
+      FROM customers
+      ORDER BY ROWNUM ASC)
+WHERE ROWNUM <= 3 
+SELECT first_name, last_name "Last Name", commission_rate "Commission Rate"
+FROM sales_representatives
+WHERE commission_rate =: com_rate
+ORDER BY last_name
+
+SELECT name "Team Name", number_of_players "Player"
+FROM teams
+ORDER BY DESC
