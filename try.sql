@@ -147,4 +147,43 @@ ORDER BY last_name
 
 SELECT name "Team Name", number_of_players "Player"
 FROM teams
-ORDER BY DESC
+ORDER BY DESC4
+
+DML3 SQL 4
+
+SELECT*FROM sales_representatives NATURAL JOIN sales_rep_addresses
+SELECT id, email, first_name, last_name, phone_number, address_line_1, address_line_2, city
+FROM sales_representatives NATURAL JOIN sales_rep_addresses
+SELECT email, first_name, last_name, phone_number, address_line_1, address_line_2, city, id
+FROM sales_representatives JOIN sales_rep_addresses
+using (id)
+SELECT*FROM items JOIN price_history
+USING (itm_number)
+SELECT c.ctr_number, c.first_name, c.last_name, c.phone_number, c.email, s.first_name, s.last_name, s.email
+FROM customers c JOIN sales_representatives s
+ON (c.sre_id = s.id)
+SELECT c.ctr_number, c.first_name, c.last_name, c.phone_number, c.email, s.first_name, s.last_name, s.email,    
+        t.name
+FROM customers c JOIN sales_representatives s
+ON (c.sre_id = s.id)
+JOIN teams t
+ON (t.id = c.tem_id)
+SELECT c.ctr_number, c.first_name, c.last_name, c.phone_number, c.email, s.first_name, s.last_name, s.email,    
+        t.name
+FROM customers c JOIN sales_representatives s
+ON (c.sre_id = s.id)
+JOIN teams t
+ON (t.id = c.tem_id)
+AND ctr_number = 'c00001'
+SELECT 'The cost of ' || i.name || ' on this day was ' || p.price AS "Cost Information"
+FROM items i JOIN price_history p
+ON i.itm_number = 'im01101045' 
+AND p.start_date = '25-November-2016'
+SELECT r.first_name Rep, r.last_name Rep, s.first_name Supervisor, s.last_name Supervisor 
+FROM sales_representatives s JOIN sales_representatives r
+ON (r.supervisor_id = s.id)
+SELECT t.name, t.number_of_players, c.ctr_number, c.first_name, c.last_name, c.phone_number, c.email
+FROM teams t LEFT OUTER JOIN customers c
+ON (t.id = c.tem_id)
+SELECT c.first_name AS "Customer First Name", c.last_name AS "Customer Last Name", c.ctr_number, c.phone_number, s.id, s.first_name AS "Sales First Name", s.last_name AS "Sales Last Name",s.phone_number
+FROM customers c, sales_representatives s
